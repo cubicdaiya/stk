@@ -12,7 +12,7 @@ static void stk_test001(void) {
   for (int i=0;i<siz;++i) {
     stk_push_back(vec, &arr[i]);
   }
-  CU_ASSERT(vec->tail == 10);
+  CU_ASSERT(vec->siz == 10);
   for (int i=0;i<siz;++i) {
     CU_ASSERT(vec->arr[i] == i+1);
   }

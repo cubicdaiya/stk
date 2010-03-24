@@ -63,8 +63,6 @@ typedef struct stk_s {
   size_t capa;
   size_t siz;
   size_t elemsiz;
-  size_t head;
-  size_t tail;
 } stk_t;
 
 stk_t *stk_create(size_t vecsiz, size_t elemsiz);
