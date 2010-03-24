@@ -58,6 +58,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     (p) = NULL;                                 \
   } while(false)
 
+#define STK_SIZ(vec) vec->siz
+#define STK_IDX(vec, idx) vec->arr[i]
+
 typedef struct stk_s {
   unsigned char *arr;
   size_t capa;
