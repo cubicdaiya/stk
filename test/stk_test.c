@@ -45,14 +45,14 @@ static void stk_test003(void) {
   int siz = sizeof(arr) / sizeof(arr[0]);
   for (int i=0;i<siz;++i) {
     arr[i].n = i + 1;
-    arr[i].c = 'c';
+    arr[i].c = 'a' + i;
     stk_push(vec, &arr[i]);
   }
   CU_ASSERT(STK_SIZ(vec) == 10);
   for (int i=0;i<siz;++i) {
     test_t *t = (test_t *)STK_IDXP(vec, i);
     CU_ASSERT(t->n == i + 1);
-    CU_ASSERT(t->c == 'c');
+    CU_ASSERT(t->c == 'a' + i);
   }
   stk_destroy(vec);
   
