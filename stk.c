@@ -48,15 +48,17 @@ stk_t *stk_create(size_t capasiz, size_t elemsiz) {
   vec->siz = 0;
   vec->elemsiz = elemsiz;
   STK_MALLOC(vec->arr, elemsiz * capasiz);
-   return vec;  
+  return vec;
 }
 
-void stk_push_back(stk_t *vec, const void *elem) {
+void stk_push(stk_t *vec, const void *elem) {
   if (vec->siz >= vec->capa) {
     vec->arr = realloc(vec->arr, (vec->elemsiz * vec->capa) * 2);
     vec->capa *= 2;
   }
-  memcpy(&vec->arr[vec->siz++], elem, sizeof(*elem));
+  uchar_t *arr_pos = (uchar_t *)vec->arr + (vec->siz * vec->elemsiz);
+  memcpy(arr_pos, elem, vec->elemsiz);
+  vec->siz++;
 }
 
 void stk_destroy(stk_t *vec) {

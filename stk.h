@@ -58,18 +58,21 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     (p) = NULL;                                 \
   } while(false)
 
-#define STK_SIZ(vec) vec->siz
-#define STK_IDX(vec, idx) vec->arr[i]
+#define STK_SIZ(vec)       (vec->siz)
+#define STK_IDX(vec, idx)  (*(vec->arr + (vec->elemsiz * idx)))
+#define STK_IDXP(vec, idx) (vec->arr + (vec->elemsiz * idx))
+
+typedef unsigned char uchar_t;
 
 typedef struct stk_s {
-  unsigned char *arr;
+  uchar_t *arr;
   size_t capa;
   size_t siz;
   size_t elemsiz;
 } stk_t;
 
 stk_t *stk_create(size_t vecsiz, size_t elemsiz);
-void stk_push_back(stk_t *vec, const void *elem);
+void stk_push(stk_t *vec, const void *elem);
 void stk_destroy(stk_t *vec);
 
 #endif
