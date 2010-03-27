@@ -56,8 +56,8 @@ void stk_push(stk_t *vec, const void *elem) {
     vec->arr = realloc(vec->arr, (vec->elemsiz * vec->capa) * 2);
     vec->capa *= 2;
   }
-  uchar_t *arr_pos = (uchar_t *)vec->arr + (vec->siz * vec->elemsiz);
-  memcpy(arr_pos, elem, vec->elemsiz);
+  uchar_t *arr_idx = (uchar_t *)STK_IDXP(vec, vec->siz);
+  memcpy(arr_idx, elem, vec->elemsiz);
   vec->siz++;
 }
 
