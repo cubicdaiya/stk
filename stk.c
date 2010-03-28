@@ -35,6 +35,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "stk.h"
 
+/**
+ * create vector
+ */
 stk_t *stk_create(size_t capasiz, size_t elemsiz) {
   stk_t *vec;
   STK_MALLOC(vec, sizeof(stk_t));
@@ -51,6 +54,9 @@ stk_t *stk_create(size_t capasiz, size_t elemsiz) {
   return vec;
 }
 
+/**
+ * push an element to vector
+ */
 void stk_push(stk_t *vec, const void *elem) {
   if (vec->siz >= vec->capa) {
     vec->arr = realloc(vec->arr, (vec->elemsiz * vec->capa) * 2);
@@ -61,6 +67,9 @@ void stk_push(stk_t *vec, const void *elem) {
   vec->siz++;
 }
 
+/**
+ * release vector
+ */
 void stk_destroy(stk_t *vec) {
   STK_FREE(vec->arr);
   STK_FREE(vec);

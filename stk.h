@@ -65,10 +65,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 typedef unsigned char uchar_t;
 
 typedef struct stk_s {
-  uchar_t *arr;
-  size_t capa;
-  size_t siz;
-  size_t elemsiz;
+  uchar_t *arr;       // array's pointer
+  size_t capa;        // capacity
+  size_t siz;         // array size
+  size_t elemsiz;     // elemment size
 } stk_t;
 
 stk_t *stk_create(size_t vecsiz, size_t elemsiz);
