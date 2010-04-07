@@ -72,7 +72,7 @@ typedef struct stk_s {
 } stk_t;
 
 stk_t *stk_create(size_t vecsiz, size_t elemsiz);
-void stk_push(stk_t *vec, const void *elem);
+bool stk_push(stk_t *vec, const void *elem);
 void stk_destroy(stk_t *vec);
 
 #endif

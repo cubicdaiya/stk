@@ -57,14 +57,19 @@ stk_t *stk_create(size_t capasiz, size_t elemsiz) {
 /**
  * push an element to vector
  */
-void stk_push(stk_t *vec, const void *elem) {
+bool stk_push(stk_t *vec, const void *elem) {
   if (vec->siz >= vec->capa) {
-    vec->arr = realloc(vec->arr, (vec->elemsiz * vec->capa) * 2);
+    uchar_t *tmp = realloc(vec->arr, (vec->elemsiz * vec->capa) * 2);
+    if (tmp == NULL) {
+      return false;
+    }
+    vec->arr = tmp;
     vec->capa *= 2;
   }
   uchar_t *arr_idx = (uchar_t *)STK_IDXP(vec, vec->siz);
   memcpy(arr_idx, elem, vec->elemsiz);
   vec->siz++;
+  return true;
 }
 
 /**
