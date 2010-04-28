@@ -16,7 +16,7 @@ all : $(TARGETS)
 stk_test : $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LFLAGS)
 
-check : $(OBJS)
+check : stk_test
 	@./stk_test
 
 clean :
